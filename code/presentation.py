@@ -39,7 +39,7 @@ def main():
     st.markdown(
         """
         ### Contact
-        Si vous observer quelconques bugs ou avez des idées d'améliorations, contactez moi via mail :   -->  📧 lemoinedamien2003.jda@gmail.com 
+        Si vous observer quelconques bugs ou avez des idées d'améliorations, contactez moi via mail :   -->  📧 lemoinedamien21@gmail.com 
     """ 
     )
     
