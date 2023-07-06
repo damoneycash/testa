@@ -30,8 +30,10 @@ def main():
     option = st.selectbox("Choisissez le fichier excel ⬇️", names)
     m = Sc_dico[option]
     saut_ligne(2)
+    '''
     st.title(":blue[Donnée traitée par scientifique] 👨‍🔬👩‍🔬")
     saut_ligne(3)
+    '''
     classeur = load_workbook(file[m]) #file
     wb = classeur.sheetnames
     wa = wb[1]
