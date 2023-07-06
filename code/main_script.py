@@ -88,41 +88,8 @@ for i in drap["L"]:
 L.pop(0)
 L.sort()
 La = array(L).unique()
-'''
-#Get liste intitulé
-L = []
-for i in drap["I"]:
-    L.append(i.value)
-L.pop(0)
-L.sort()
-Li = array(L).unique()
-#print(Li)
-'''
 
-'''
-#GET LISTE DATES
-G = []
-for i in drap["R"]:
-    G.append(i.value)
-G.pop(0)
-Lg = array(G).unique()
-
-L = []
-for i in drap["R"]:
-    L.append(i.value)
-L.pop(0)
-M = []
-for i in L:
-    a = str(i)
-    split1 = a.split(" ")[0]
-    M.append(split1)
-M.sort()
-#print(len(M))
-cestuntest = M
-Ld = array(M).unique()
-#print(Ld)
-'''
-#Get tout e la data
+#Get toute la data
 a = ''
 for line in drap:
     for i in line:
@@ -273,6 +240,17 @@ for i in range(len(Sc_data)):
     #print(L1)        
     L2.append(L1)
 Sc_data = L2
+unique_data = []
+seen = set()
+for scientist_data in Sc_data:
+    unique_scientist_data = []
+    for row in scientist_data:
+        if tuple(row) not in seen:
+            seen.add(tuple(row))
+            unique_scientist_data.append(row)
+    unique_data.append(unique_scientist_data)
+
+Sc_data = unique_data
 #print(Sc_data)
 
 
@@ -302,6 +280,7 @@ print(G)
 '''
 
 def date_expire():
+    #print(Sc_data)
     Urg = []
     Warn = []
     K = []
@@ -341,18 +320,23 @@ def date_expire():
     #print(M)   
     #print(L1)
     L2.append(L1)
-    Warn = L1
+    Warn_unique = []
+    seen = set()
+    for item in Warn:
+        if tuple(item) not in seen:
+            seen.add(tuple(item))
+            Warn_unique.append(item)
+    
 
-    if not Warn:
-        return None
-
-    df = DataFrame(Warn)
+    if not Warn_unique:
+        return st.write("Rien d'urgent ! :smile:")
+    df = DataFrame(Warn_unique)
     df.columns=Headers
     st.dataframe(df, use_container_width= True, height= 700, hide_index= True)
     st.column_config.TextColumn(width="small")
     return
 #print(Sc_data)
-
+#date_expire()
 
 #METTRE EN FORME AVEC STREAMLIT SCIENTIFIQUE
 def scientifique():
@@ -469,6 +453,18 @@ for i in range(len(La_data)):
     #print(L1)        
     L2.append(L1)
 La_data = L2
+
+unique_data = []
+seen = set()
+for scientist_data in La_data:
+    unique_scientist_data = []
+    for row in scientist_data:
+        if tuple(row) not in seen:
+            seen.add(tuple(row))
+            unique_scientist_data.append(row)
+    unique_data.append(unique_scientist_data)
+
+La_data = unique_data
 #print(La_data)
 
 #METTRE EN FORME AVEC STREAMLIT ANALYTIQUE
@@ -535,7 +531,6 @@ Table_final = []
 for i in range(len(Sc_data)):
     for j in range(len(Sc_data[i])):
         Table_final.append(Sc_data[i][j])
-
 
 
 
