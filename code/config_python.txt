@@ -1,0 +1,34 @@
+install python
+pip install streamlit
+pip install numpy
+pip install pandas
+pip install openpyxl
+pip install glob
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[theme]
+base="dark"
+primaryColor="#1db72d"
+backgroundColor="#4b6fce"
+secondaryBackgroundColor="#183058"
+font="serif"
